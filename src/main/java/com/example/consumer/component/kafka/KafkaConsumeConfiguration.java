@@ -22,7 +22,7 @@ public class KafkaConsumeConfiguration {
     @Value("${app.kafka.offset-reset}")
     private String kafkaOffsetReset;
 
-    @Bean
+
     public Map<String, Object> settingConsumerConfigs() {
         Map<String, Object> props = new HashMap<>();
         props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, server);
@@ -32,7 +32,7 @@ public class KafkaConsumeConfiguration {
         return props;
     }
 
-    @Bean
+
     public ConsumerFactory<String, String> generateConsumerFactory() {
         return new DefaultKafkaConsumerFactory<>(settingConsumerConfigs());
     }

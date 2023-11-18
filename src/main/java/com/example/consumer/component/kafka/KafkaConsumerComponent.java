@@ -23,7 +23,7 @@ public class KafkaConsumerComponent {
     public void consumeMessage(@Payload String message) {
        log.info("factory got messa got {}", message);
 
-       this.testService.dosomethingMethod(message);
+//       this.testService.dosomethingMethod(message);
     }
 
 

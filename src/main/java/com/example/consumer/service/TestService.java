@@ -1,27 +1,38 @@
 package com.example.consumer.service;
 
-import com.example.consumer.model.ApiModel;
+import com.example.consumer.component.util.PasswordEncoderUtil;
 import com.example.consumer.model.InventoryModel;
-import com.example.consumer.model.RegistrationModel;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 
 
 @Slf4j
 @Service
 public class TestService {
+    private ObjectMapper mapper;
+
+    public TestService(@Qualifier("initObjectMapper") ObjectMapper initObjectMapper) {
+        this.mapper = mapper;
+    }
+
+    public String setup(){
+        return "repository.get()";
+    }
+
     public void dosomethingMethod(String message) {
         try {
-            ObjectMapper mapper = new ObjectMapper();
-            mapper.registerModule(new JavaTimeModule());
 
-            InventoryModel x = mapper.readValue(message, InventoryModel.class);
+            PasswordEncoderUtil.getInstance().encodePassword();
 
-            System.out.println( x.getItemName());
+            List<InventoryModel> x = mapper.readValue(message, new TypeReference<List<InventoryModel>>() {});
+
+
+            System.out.println( x.size());
 
         } catch (Exception e) {
             e.printStackTrace();
