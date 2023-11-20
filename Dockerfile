@@ -1,4 +1,4 @@
-FROM openjdk:17-jdk
+FROM openjdk:17-alpine
 
 ARG LOCAL_APP_FILE=consumer-0.0.1-SNAPSHOT.jar
 

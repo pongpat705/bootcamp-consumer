@@ -1,11 +1,10 @@
 app:
   kafka:
-    server: localhost:29092
-#  offset-reset: earliest
+    server: localhost:19092
     offset-reset: latest
     topics:
       regist: test.event
     groupid:
       regist: group.test.event
 server:
-  port: 8082
+  port: 8080
